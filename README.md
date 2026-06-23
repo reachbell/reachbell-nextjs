@@ -2,6 +2,8 @@
 
 Next.js bindings for the [ReachBell](https://reachbell.com) SDK.
 
+Full documentation: https://docs.reachbell.com
+
 Wraps `@reachbell/react` and adds two Next-specific helpers:
 - `<ReachBellScript />` — drop-in `next/script` wrapper that loads the SDK from a CDN
 - `getAuthHeaders()` — server-side helper for App Router route handlers
