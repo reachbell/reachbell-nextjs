@@ -39,7 +39,7 @@
     "@types/react": "^19.0.0",
     "react": "^19.0.0",
     "next": "^16.0.0",
-    "@reachbell/sdk":   "file:../sdk",
-    "@reachbell/react": "file:../react"
+    "@reachbell/sdk":   "file:../reachbell-sdk",
+    "@reachbell/react": "file:../reachbell-reactjs"
   }
 }
