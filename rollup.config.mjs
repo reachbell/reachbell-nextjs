@@ -1,10 +1,12 @@
 import typescript from '@rollup/plugin-typescript';
 
+const clientBanner = (chunk) => (chunk.name === 'index' ? '"use client";' : '');
+
 export default {
-  input: 'src/index.tsx',
+  input: { index: 'src/index.tsx', server: 'src/server.ts' },
   output: [
-    { file: 'dist/index.cjs', format: 'cjs', sourcemap: true, exports: 'named' },
-    { file: 'dist/index.mjs', format: 'esm', sourcemap: true },
+    { dir: 'dist', entryFileNames: '[name].cjs', chunkFileNames: '[name]-[hash].cjs', format: 'cjs', sourcemap: true, exports: 'named', banner: clientBanner },
+    { dir: 'dist', entryFileNames: '[name].mjs', chunkFileNames: '[name]-[hash].mjs', format: 'esm', sourcemap: true, banner: clientBanner },
   ],
   external: [
     'react',
