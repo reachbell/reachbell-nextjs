@@ -1,6 +1,6 @@
 {
   "name": "@reachbell/nextjs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Next.js bindings for the ReachBell SDK — App Router-ready client provider, hooks, and the official <Script> drop-in.",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
