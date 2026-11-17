@@ -26,7 +26,7 @@ export { getAuthHeaders } from './server';
 interface ReachBellScriptProps {
   /** Project API key — required. */
   apiKey:     string;
-  /** Override the API origin. Defaults to https://api.reachbell.com. */
+  /** Only for staging or self-hosted APIs. The SDK uses https://api.reachbell.com when omitted. */
   apiUrl?:    string;
   /** Source URL for the SDK bundle. Defaults to https://app.reachbell.com/reachbell.js. */
   src?:       string;
@@ -57,7 +57,7 @@ let scriptInitialised = false;
  */
 export function ReachBellScript({
   apiKey,
-  apiUrl     = 'https://api.reachbell.com',
+  apiUrl,
   src        = 'https://app.reachbell.com/reachbell.js',
   autoPrompt = false,
   swPath     = '/reachbell-sw.js',
@@ -68,7 +68,7 @@ export function ReachBellScript({
     const rb = (window as unknown as { ReachBell?: ReachBellGlobal }).ReachBell;
     if (!rb || typeof rb.init !== 'function') return;
     scriptInitialised = true;
-    rb.init({ apiKey, apiUrl, swPath, autoPrompt, debug });
+    rb.init({ apiKey, swPath, autoPrompt, debug, ...(apiUrl ? { apiUrl } : {}) });
   };
 
   return <Script src={src} strategy="afterInteractive" id="reachbell-sdk" onReady={handleReady} />;
