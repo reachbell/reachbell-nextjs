@@ -21,7 +21,14 @@ import type { ReachBellConfig } from '@reachbell/react';
 // instead of mixing `@reachbell/react` and `@reachbell/nextjs`.
 export { ReachBellProvider, useReachBell, useNotificationPermission } from '@reachbell/react';
 export type { ReachBellConfig, SubscribeResult, ApiResult, ReachBellProviderProps } from '@reachbell/react';
-export { getAuthHeaders } from './server';
+import { getAuthHeaders as serverGetAuthHeaders } from './server';
+
+/**
+ * @deprecated Import from `@reachbell/nextjs/server`. This entry is a
+ * `"use client"` module, so in App Router route handlers and Server Actions
+ * this export is a client reference and calling it throws.
+ */
+export const getAuthHeaders = serverGetAuthHeaders;
 
 interface ReachBellScriptProps {
   /** Project API key — required. */

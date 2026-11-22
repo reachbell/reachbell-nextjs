@@ -106,7 +106,7 @@ export async function POST(req: Request) {
 
 ## Service worker
 
-Copy `reachbell-sw.js` from your ReachBell dashboard into `public/reachbell-sw.js`. Next.js serves `public/` from the site root, which is exactly where the service worker needs to live.
+Run `npx reachbell` in your project root. It writes `public/reachbell-sw.js` (the `reachbell` command ships with `@reachbell/sdk`). Next.js serves `public/` from the site root, which is exactly where the service worker needs to live.
 
 ## API
 
@@ -116,7 +116,7 @@ Copy `reachbell-sw.js` from your ReachBell dashboard into `public/reachbell-sw.j
 | `useReachBell()` | Re-exported hook. |
 | `useNotificationPermission()` | Re-exported hook. |
 | `<ReachBellScript>` | Client component that loads the SDK with `next/script` and inits it on load. No React provider required. |
-| `getAuthHeaders({ apiKey, orgId? })` | From `@reachbell/nextjs/server`. Pure function. Builds the `x-api-key` + `x-org-id` + `Content-Type` headers. Server only, with the secret key. |
+| `getAuthHeaders({ apiKey, orgId? })` | From `@reachbell/nextjs/server`. (The root-entry re-export is deprecated: it is a client reference in App Router server code.) Pure function. Builds the `x-api-key` + `x-org-id` + `Content-Type` headers. Server only, with the secret key. |
 
 ## License
 
