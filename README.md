@@ -107,7 +107,7 @@ export async function POST(req: Request) {
 
 ## Service worker
 
-Make sure a `public/` folder exists, then run `npx reachbell` in your project root (the `reachbell` command ships with `@reachbell/sdk`). It writes `public/reachbell-sw.js`, which Next.js serves from the site root — exactly where the service worker needs to live. Without a `public/` folder it writes `./reachbell-sw.js` in the project root instead, which Next.js does not serve, so create `public/` first (`mkdir -p public`). If a `reachbell-sw.js` already exists at the target it is left untouched.
+Make sure a `public/` folder exists, then run `npx @reachbell/sdk` in your project root (it runs the `reachbell` command that ships with `@reachbell/sdk`). It writes `public/reachbell-sw.js`, which Next.js serves from the site root — exactly where the service worker needs to live. Without a `public/` folder it writes `./reachbell-sw.js` in the project root instead, which Next.js does not serve, so create `public/` first (`mkdir -p public`). If a `reachbell-sw.js` already exists at the target it is left untouched.
 
 ## API
 

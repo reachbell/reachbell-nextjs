@@ -20,7 +20,7 @@ import type { ReachBellConfig } from '@reachbell/react';
 // import surface — `import { ReachBellProvider, useReachBell } from '@reachbell/nextjs'`
 // instead of mixing `@reachbell/react` and `@reachbell/nextjs`.
 export { ReachBellProvider, useReachBell, useNotificationPermission } from '@reachbell/react';
-export type { ReachBellConfig, SubscribeResult, ApiResult, ReachBellProviderProps } from '@reachbell/react';
+export type { ReachBellConfig, SubscribeResult, ApiResult, IdentifyOptions, ReachBellProviderProps } from '@reachbell/react';
 import { getAuthHeaders as serverGetAuthHeaders } from './server';
 
 /**
