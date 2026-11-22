@@ -16,8 +16,8 @@
         "typescript": "^5.0.0",
       },
       "peerDependencies": {
-        "@reachbell/react": "^1.0.0",
-        "@reachbell/sdk": "^1.0.0",
+        "@reachbell/react": "^1.1.0",
+        "@reachbell/sdk": "^1.1.0",
         "next": "^14.0.0 || ^15.0.0 || ^16.0.0",
         "react": "^18.0.0 || ^19.0.0",
       },
@@ -142,9 +142,9 @@
 
     "@next/swc-win32-x64-msvc": ["@next/swc-win32-x64-msvc@16.2.9", "", { "os": "win32", "cpu": "x64" }, "sha512-qr2VL3Ce5QrwgO2yh1ujSBawrimjVKX8FGF/cOynmdYKJY0BdHpGVNIRK1tqONB10Vkm25Ub1BD2bkjWs4+96w=="],
 
-    "@reachbell/react": ["@reachbell/react@file:../reachbell-reactjs", { "devDependencies": { "@reachbell/sdk": "file:../reachbell-sdk", "@rollup/plugin-typescript": "^11.0.0", "@types/react": "^19.0.0", "react": "^19.0.0", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0" }, "peerDependencies": { "@reachbell/sdk": "^1.0.0", "react": "^18.0.0 || ^19.0.0" } }],
+    "@reachbell/react": ["@reachbell/react@file:../reachbell-reactjs", { "devDependencies": { "@reachbell/sdk": "file:../reachbell-sdk", "@rollup/plugin-typescript": "^11.0.0", "@types/react": "^19.0.0", "react": "^19.0.0", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0" }, "peerDependencies": { "@reachbell/sdk": "^1.1.0", "react": "^18.0.0 || ^19.0.0" } }],
 
-    "@reachbell/sdk": ["@reachbell/sdk@file:../reachbell-sdk", { "devDependencies": { "@rollup/plugin-typescript": "^11.0.0", "happy-dom": "^20.10.2", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0", "vitest": "^2.0.0" } }],
+    "@reachbell/sdk": ["@reachbell/sdk@file:../reachbell-sdk", { "devDependencies": { "@rollup/plugin-typescript": "^11.0.0", "happy-dom": "^20.10.2", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0", "vitest": "^2.0.0" }, "bin": { "reachbell": "bin/reachbell.js" } }],
 
     "@rollup/plugin-typescript": ["@rollup/plugin-typescript@11.1.6", "", { "dependencies": { "@rollup/pluginutils": "^5.1.0", "resolve": "^1.22.1" }, "peerDependencies": { "rollup": "^2.14.0||^3.0.0||^4.0.0", "tslib": "*", "typescript": ">=3.7.0" }, "optionalPeers": ["rollup", "tslib"] }, "sha512-R92yOmIACgYdJ7dJ97p4K69I8gg6IEHt8M7dUBxN3W6nrO8uUxX5ixl0yU/N3aZTi8WhPuICvOHXQvF6FaykAA=="],
 
@@ -348,7 +348,7 @@
 
     "ws": ["ws@8.22.1", "", { "peerDependencies": { "bufferutil": "^4.0.1", "utf-8-validate": ">=5.0.2" }, "optionalPeers": ["bufferutil", "utf-8-validate"] }, "sha512-oyL6OPYme/CmiFvNuGzeoxCJ4nOrZE2O1FwM9MWM1AsGri6nLXB2pg+lNA8aLeXMSav0J6eIVS1j6vUPzUtK9g=="],
 
-    "@reachbell/react/@reachbell/sdk": ["@reachbell/sdk@file:../reachbell-sdk", { "devDependencies": { "@rollup/plugin-typescript": "^11.0.0", "happy-dom": "^20.10.2", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0", "vitest": "^2.0.0" } }],
+    "@reachbell/react/@reachbell/sdk": ["@reachbell/sdk@file:../reachbell-sdk", { "devDependencies": { "@rollup/plugin-typescript": "^11.0.0", "happy-dom": "^20.10.2", "rollup": "^4.0.0", "tslib": "^2.6.0", "typescript": "^5.0.0", "vitest": "^2.0.0" }, "bin": { "reachbell": "bin/reachbell.js" } }],
 
     "@vitest/mocker/estree-walker": ["estree-walker@3.0.3", "", { "dependencies": { "@types/estree": "^1.0.0" } }, "sha512-7RUKfXgSMMkzt6ZuXmqapOurLGPPfgj6l9uRZ7lRGolvk0y2yocc35LdcxKC5PQZdn2DMqioAQ2NoWcrTKmm6g=="],
 

@@ -20,10 +20,17 @@ import type { ReachBellConfig } from '@reachbell/react';
 // import surface — `import { ReachBellProvider, useReachBell } from '@reachbell/nextjs'`
 // instead of mixing `@reachbell/react` and `@reachbell/nextjs`.
 export { ReachBellProvider, useReachBell, useNotificationPermission } from '@reachbell/react';
-export type { ReachBellConfig, SubscribeResult, ApiResult, ReachBellProviderProps } from '@reachbell/react';
-export { getAuthHeaders } from './server';
+export type { ReachBellConfig, SubscribeResult, ApiResult, IdentifyOptions, ReachBellProviderProps } from '@reachbell/react';
+import { getAuthHeaders as serverGetAuthHeaders } from './server';
 
-interface ReachBellScriptProps {
+/**
+ * @deprecated Import from `@reachbell/nextjs/server`. This entry is a
+ * `"use client"` module, so in App Router route handlers and Server Actions
+ * this export is a client reference and calling it throws.
+ */
+export const getAuthHeaders = serverGetAuthHeaders;
+
+export interface ReachBellScriptProps {
   /** Project API key — required. */
   apiKey:     string;
   /** Only for staging or self-hosted APIs. The SDK uses https://api.reachbell.com when omitted. */
@@ -36,6 +43,8 @@ interface ReachBellScriptProps {
   swPath?:    string;
   /** Surface SDK debug logs in the browser console. */
   debug?:     boolean;
+  /** Set to false to hide the "Powered by ReachBell" credit in the opt-in prompt. */
+  showPoweredBy?: boolean;
 }
 
 type ReachBellGlobal = { init(config: ReachBellConfig): void };
@@ -62,13 +71,18 @@ export function ReachBellScript({
   autoPrompt = false,
   swPath     = '/reachbell-sw.js',
   debug      = false,
+  showPoweredBy,
 }: ReachBellScriptProps) {
   const handleReady = () => {
     if (scriptInitialised) return;
     const rb = (window as unknown as { ReachBell?: ReachBellGlobal }).ReachBell;
     if (!rb || typeof rb.init !== 'function') return;
     scriptInitialised = true;
-    rb.init({ apiKey, swPath, autoPrompt, debug, ...(apiUrl ? { apiUrl } : {}) });
+    rb.init({
+      apiKey, swPath, autoPrompt, debug,
+      ...(apiUrl ? { apiUrl } : {}),
+      ...(showPoweredBy !== undefined ? { showPoweredBy } : {}),
+    });
   };
 
   return <Script src={src} strategy="afterInteractive" id="reachbell-sdk" onReady={handleReady} />;

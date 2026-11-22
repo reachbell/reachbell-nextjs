@@ -67,9 +67,10 @@ For pages that don't need a React-tree integration, drop in the script component
 
 ```tsx
 // app/layout.tsx
+import type { ReactNode } from 'react';
 import { ReachBellScript } from '@reachbell/nextjs';
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body>
@@ -106,7 +107,7 @@ export async function POST(req: Request) {
 
 ## Service worker
 
-Copy `reachbell-sw.js` from your ReachBell dashboard into `public/reachbell-sw.js`. Next.js serves `public/` from the site root, which is exactly where the service worker needs to live.
+Make sure a `public/` folder exists, then run `npx @reachbell/sdk` in your project root (it runs the `reachbell` command that ships with `@reachbell/sdk`). It writes `public/reachbell-sw.js`, which Next.js serves from the site root — exactly where the service worker needs to live. Without a `public/` folder it writes `./reachbell-sw.js` in the project root instead, which Next.js does not serve, so create `public/` first (`mkdir -p public`). If a `reachbell-sw.js` already exists at the target it is left untouched.
 
 ## API
 
@@ -115,8 +116,8 @@ Copy `reachbell-sw.js` from your ReachBell dashboard into `public/reachbell-sw.j
 | `<ReachBellProvider>` | Re-exported from `@reachbell/react`. Use inside a client component. |
 | `useReachBell()` | Re-exported hook. |
 | `useNotificationPermission()` | Re-exported hook. |
-| `<ReachBellScript>` | Client component that loads the SDK with `next/script` and inits it on load. No React provider required. |
-| `getAuthHeaders({ apiKey, orgId? })` | From `@reachbell/nextjs/server`. Pure function. Builds the `x-api-key` + `x-org-id` + `Content-Type` headers. Server only, with the secret key. |
+| `<ReachBellScript>` | Client component that loads the SDK with `next/script` and inits it on load. No React provider required. Props (`ReachBellScriptProps`): `apiKey`, `apiUrl?`, `src?`, `autoPrompt?`, `swPath?`, `debug?`, `showPoweredBy?`. |
+| `getAuthHeaders({ apiKey, orgId? })` | From `@reachbell/nextjs/server`. (The root-entry re-export is deprecated: it is a client reference in App Router server code.) Pure function. Builds the `x-api-key` + `x-org-id` + `Content-Type` headers. Server only, with the secret key. |
 
 ## License
 
